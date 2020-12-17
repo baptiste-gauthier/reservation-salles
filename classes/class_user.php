@@ -71,17 +71,26 @@ class Utilisateur {
         }
     }
 
-    public function connect($login,$pass)
+    public function connect()
     {
-        $requete = $this->connexion->prepare("SELECT * FROM utilisateurs WHERE login = :login AND password = :password ") ;
+        $requete = $this->connexion->prepare("SELECT * FROM utilisateurs WHERE login = :login ") ;
 
         $requete->bindParam(':login',$this->login) ;
-        $requete->bindParam(':password',$this->password) ;
+        // $requete->bindParam(':password',$this->pass) ;
                 
         $requete->execute();
         $result = $requete->fetch() ;
 
-        return $result ; 
+        var_dump($result);
+
+        if($result && password_verify($this->password,$result['password']))
+        {
+            return $result ; 
+        }
+        else{
+            echo 'erreur' ;
+        }
+
 
     }
 

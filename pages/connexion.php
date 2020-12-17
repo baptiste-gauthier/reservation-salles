@@ -42,20 +42,19 @@ require("../classes/class_user.php");
 
 if(isset($_POST['valider']))
 {
-    $login = $_POST['login'] ;
-    $password = $_POST['password'] ; 
+    $login = htmlspecialchars($_POST['login']) ;
+    $password = htmlspecialchars($_POST['password']) ; 
 
     if(!empty($login) && !empty($password))
     {
         $user = new Utilisateur($login, $password);
         $user->connexionBdd("reservationsalles", "root","");
-        $result = $user->connect($login,$password);
-
+        $result = $user->connect();
         if($result)
         {
-            var_dump($user); 
+            var_dump($result); 
 
-            $_SESSION['user'] = $user; 
+            $_SESSION['user'] = $result; 
 
             header("Location: profil.php");
         }

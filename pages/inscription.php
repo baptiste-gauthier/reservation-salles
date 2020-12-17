@@ -43,13 +43,13 @@ require("../classes/class_user.php");
 
 if(isset($_POST['valider']))
 {
-    $login = $_POST['login'] ;
-    $password = $_POST['password'] ; 
-    $confirm_pass = $_POST['confirm_password'] ;
+    $login = htmlspecialchars($_POST['login']) ;
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT) ; 
+    $confirm_pass = htmlspecialchars($_POST['confirm_password']) ;
 
     if(!empty($login) && !empty($password) && !empty($confirm_pass))
     {
-        if($_POST['password'] == $_POST['confirm_password'])
+        if(($_POST['password'] == $_POST['confirm_password']) && (preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).{8,}$#',$_POST['password'])))
         {
             $user = new Utilisateur($login, $password);
             $user->connexionBdd("reservationsalles", "root","");
@@ -57,11 +57,13 @@ if(isset($_POST['valider']))
 
             header("Location: connexion.php");
         }
-        else
+        elseif($_POST['password'] != $_POST['confirm_password'])
         {
-            echo 'mot de passe différents'; 
+            echo 'Mot de passe différents'; 
         }
-
+        else{
+            echo 'Mot de passe non valide : Il doit faire au minimum 8 caractères et doit contenir 1 majuscule, 1 chiffre et 1 caractère spécial' ; 
+        }
     }
 }
 
