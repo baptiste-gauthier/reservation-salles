@@ -95,25 +95,37 @@ class Utilisateur {
         if($this->checkLogin() == 0)
         {
 
-        $requete = $this->connexion->prepare("UPDATE utilisateurs 
-                    SET login = :newlogin,
-                        password = :newpass
-                            WHERE id = :id "
-        );
+            $requete = $this->connexion->prepare("UPDATE utilisateurs 
+                        SET login = :newlogin,
+                            password = :newpass
+                                WHERE id = :id "
+            );
 
-        $requete->bindValue(":newlogin", $this->login );
-        $requete->bindValue(":newpass", $this->password );
-        $requete->bindValue(":id", $id );
+            $requete->bindValue(":newlogin", $this->login );
+            $requete->bindValue(":newpass", $this->password );
+            $requete->bindValue(":id", $id );
 
-        $requete->execute();
+            $requete->execute();
 
-        echo 'changemnt eff' ;
+            echo 'changemnt eff' ;
 
         }
         else{
             echo 'login déjà pris' ;
         }
 
+    }
+
+    function getAllinfos()
+    {
+        $requete = $this->connexion->prepare("SELECT * FROM utilisateurs WHERE login = :login") ;
+        $requete->bindParam(':login', $this->login) ;
+
+        $requete->execute(); 
+
+        $result = $requete->fetch(); 
+
+        return $result ;
     }
 
     
