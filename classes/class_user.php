@@ -81,16 +81,38 @@ class Utilisateur {
         $requete->execute();
         $result = $requete->fetch() ;
 
-        var_dump($result);
-
         if($result && password_verify($this->password,$result['password']))
         {
             return $result ; 
         }
         else{
-            echo 'erreur' ;
+            echo 'erreur : ' ;
         }
+    }
 
+    function update($id)
+    {
+        if($this->checkLogin() == 0)
+        {
+
+        $requete = $this->connexion->prepare("UPDATE utilisateurs 
+                    SET login = :newlogin,
+                        password = :newpass
+                            WHERE id = :id "
+        );
+
+        $requete->bindValue(":newlogin", $this->login );
+        $requete->bindValue(":newpass", $this->password );
+        $requete->bindValue(":id", $id );
+
+        $requete->execute();
+
+        echo 'changemnt eff' ;
+
+        }
+        else{
+            echo 'login déjà pris' ;
+        }
 
     }
 
