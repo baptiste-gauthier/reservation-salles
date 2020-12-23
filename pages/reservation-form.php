@@ -9,15 +9,16 @@
         $date_fin = $_POST['date_fin'] ;
         $id_utilisateur = $_SESSION['user']['id'] ; 
 
+
         // Variable heure + jour début et fin pour les conditions
 
         $heure_debut_nombre = date_create($date_debut);
         $heure_debut = date_format($heure_debut_nombre ,'G'); // renvoi int 15 pour ex 15h00 
-        $jour_debut = date_format($heure_debut_nombre ,'l'); // chaine de caractere : monday, tuesday etc 
+        $jour_debut = date_format($heure_debut_nombre ,'w'); // int 0 pour diamnche, 1 lundi etc...
 
         $heure_fin_nombre = date_create($date_fin);
         $heure_fin = date_format($heure_fin_nombre ,'G');
-        $jour_fin = date_format($heure_fin_nombre ,'l');
+        $jour_fin = date_format($heure_fin_nombre ,'w');
 
         $interval = $heure_fin - $heure_debut ; 
         
@@ -35,7 +36,7 @@
 
             $resultat = $sql->fetchColumn() ;
 
-            if($resultat == 0 && $jour_debut == $jour_fin && $interval < 2 ) 
+            if($resultat == 0 && $jour_debut == $jour_fin && $interval <= 2 && $jour_debut > 0 && $jour_debut < 6 && $heure_debut >= 8 && $heure_debut <= 18 && $heure_fin >= 9 && $heure_fin <= 19 && $heure_fin > $heure_debut ) 
             {
                 $requete = $connexion->prepare("INSERT INTO reservations(titre,description,debut,fin,id_utilisateur) VALUES (:titre,:description,:debut,:fin,:id_utilisateur)");
                 $requete->bindParam(':titre',$titre );
@@ -47,6 +48,16 @@
                 $requete->execute() ; 
     
                 echo 'reservation effectué' ;
+                if($interval == 2)
+                {
+                    $new_date = date_create($date_debut);
+                    date_modify($new_date,"+1 hour") ;
+
+                    $date_debut = date_format($new_date,'Y-m-d H:i:s');
+                    
+                    $requete->execute() ; 
+
+                }
             }
             elseif($jour_debut != $jour_fin)
             {
@@ -54,6 +65,18 @@
             }
             elseif($interval > 2){
                 echo 'Vous ne pouvez pas reservé plus de 2h';
+            }
+            elseif($jour_debut == 0 OR $jour_debut == 6)
+            {
+                echo 'Les reservations se font uniquement du lundi au vendredi' ; 
+            }
+            elseif($heure_debut < 8 OR $heure_debut > 18 OR $heure_fin < 9 OR $heure_fin > 19)
+            {
+                echo 'Les reservations se font entre 8h et 19h' ;
+            }
+            elseif($heure_fin <= $heure_debut)
+            {
+                echo 'Erreur : l\'heure de fin est inférieure à l\'heure du début' ; 
             }
             else{
                 echo 'Ce crénau horaire est déjà reservé ! ' ; 

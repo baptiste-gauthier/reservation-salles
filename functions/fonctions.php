@@ -35,7 +35,7 @@ function checkHoraire($jour,$heure){
         
     }
     else{
-        echo '<td rowspan="1"> crénaux disponible </td>' ;
+        echo '<td> crénaux disponible </td>' ;
     }
 }
 
