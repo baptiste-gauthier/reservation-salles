@@ -32,6 +32,7 @@ function checkHoraire($jour,$heure){
 
 
         echo '<td style="background-color : orange ; color : white ;" rowspan='.$interval.'>'.$result['login'].','.$result['description'].'</td>' ;
+        
     }
     else{
         echo '<td rowspan="1"> crénaux disponible </td>' ;
