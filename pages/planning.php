@@ -35,7 +35,7 @@ include("../functions/fonctions.php");
                         {
                             if($jour == 0)
                             {
-                                echo '<th rowspan = "2">' .$heure.'h </th>';
+                                echo '<th>' .$heure.'h </th>';
                             }
                             else{
                                 checkHoraire($jour,$heure) ; 

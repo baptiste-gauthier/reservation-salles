@@ -20,18 +20,8 @@ function checkHoraire($jour,$heure){
 
     if($result)
     {
-        $date_fin = date_create($result['fin']); 
-        $heure_fin = date_format($date_fin, 'G' ) ; 
-        var_dump($heure);
-        var_dump($heure_fin);
-
-
-        $interval = $heure_fin - $heure ; 
-
-        var_dump($interval);
-
-
-        echo '<td style="background-color : orange ; color : white ;" rowspan='.$interval.'>'.$result['login'].','.$result['description'].'</td>' ;
+    
+        echo '<td style="background-color : orange ; color : white ;">'.$result['login'].','.$result['description'].'</td>' ;
         
     }
     else{
