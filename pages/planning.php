@@ -30,38 +30,49 @@ include("../functions/fonctions.php");
         
         <main>
 
-           <table>
-            <thead>
-                <tr>
-                    <th> Semaine numéro ? </th>
-                    <td> Lundi </td>
-                    <td> Mardi </td>
-                    <td> Mercredi </td>
-                    <td> Jeudi </td>
-                    <td> Vendredi </td>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                    for($heure = 8 ; $heure <= 19 ; $heure++) // boucle pour les lignes des heures
-                    {
-                        echo '<tr></tr>'; 
-                        for($jour = 0 ; $jour <= 5 ; $jour++) // boucle pour les crénaux de chaque jour 
-                        {
-                            if($jour == 0)
-                            {
-                                echo '<th>' .$heure.'h </th>';
-                            }
-                            else{
-                                checkHoraire($jour,$heure) ; 
-                            }
-                        }
-                    }
-                ?>
+            <section id="planning">
+                <article class="contenu_planning">
 
-            </tbody>
+                    <div class="text">
+                        <h1> Planning réservation tables </h1>
+                    </div>
 
-           </table>
+                    <div class="tableau">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th> Semaine numéro ? </th>
+                                    <td class="jour"> Lundi </td>
+                                    <td class="jour"> Mardi </td>
+                                    <td class="jour"> Mercredi </td>
+                                    <td class="jour"> Jeudi </td>
+                                    <td class="jour"> Vendredi </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    for($heure = 8 ; $heure <= 19 ; $heure++) // boucle pour les lignes des heures
+                                    {
+                                        echo '<tr></tr>'; 
+                                        for($jour = 0 ; $jour <= 5 ; $jour++) // boucle pour les crénaux de chaque jour 
+                                        {
+                                            if($jour == 0)
+                                            {
+                                                echo '<th>' .$heure.'h </th>';
+                                            }
+                                            else{
+                                                checkHoraire($jour,$heure) ; 
+                                            }
+                                        }
+                                    }
+                                ?>
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                </article>
+            </section>
         </main>            
           
 
@@ -74,13 +85,4 @@ include("../functions/fonctions.php");
     </body>
 </html>
 
-<style>
-    table {
-        border-collapse : collapse ; 
-    }
-    td,th{
-        border : 2px solid black ;
-        padding : 10px ; 
-    }
-</style>
 

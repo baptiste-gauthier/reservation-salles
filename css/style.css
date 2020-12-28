@@ -376,6 +376,70 @@ footer a{
     padding: 10 0px;
 }
 
+/* CSS PLANNING */
+.contenu_planning{
+    padding: 20px;
+}
+
+.contenu_planning h1 {
+    padding: 20px 0px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #0C3140;
+    
+}
+
+.contenu_planning h1::after{
+    content: "";
+    display: block;
+    width: 10%;
+    margin: auto;
+    height: 3px; 
+    background-color: #F29D35;
+    border-radius: 2em;
+    
+}
+
+.tableau{
+    display : flex;
+    justify-content: center;
+}
+
+table {
+    border-collapse : collapse ; 
+    color: #0C3140;
+    text-align: center;
+    margin : 30px;
+}
+td,th{
+    border : 1px solid #0C3140 ;
+    padding : 10px ; 
+}
+
+th{
+    color: white;
+    background-color: #0c3140e3;
+}
+
+.jour{
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.reserv{
+    color: white;
+    background-color: #F29D35;
+}
+
+.reserv a{
+    text-decoration: none;
+    color: black;
+}
+
+.reserv:hover{
+    background-color: #f29d35a6;
+}
+
 
 
 

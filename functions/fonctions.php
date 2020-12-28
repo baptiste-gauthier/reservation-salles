@@ -4,7 +4,7 @@ function checkHoraire($jour,$heure){
     $connexion = new PDO('mysql:host=localhost;dbname=reservationsalles',"root","");
     $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION) ; 
 
-    $requete = $connexion->prepare('SELECT login,titre,description,debut,fin
+    $requete = $connexion->prepare('SELECT login,titre,description,debut,fin,id_utilisateur
                                         FROM utilisateurs 
                                             INNER JOIN reservations
                                                 ON utilisateurs.id = reservations.id_utilisateur
@@ -18,10 +18,12 @@ function checkHoraire($jour,$heure){
 
     $result = $requete->fetch();
 
+    $_GET['id'] = $result['id_utilisateur'] ;
+
     if($result)
     {
     
-        echo '<td style="background-color : orange ; color : white ;">'.$result['login'].','.$result['description'].'</td>' ;
+        echo '<td class="reserv"><a href="http://localhost/reservation-salles/pages/reservation.php?id='.$_GET['id'].'">'.$result['login'].','.$result['description'].'</a></td>' ;
         
     }
     else{
