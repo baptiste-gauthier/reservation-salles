@@ -301,6 +301,81 @@ footer a{
 
 }
 
+/* CSS SECTION FORMULAIRE */
+
+.contenu_formulaire{
+    width : 80% ; 
+    margin : auto ; 
+    display: flex;
+    justify-content: center;
+}
+
+.contenu_formulaire form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
+    background-color: #0C3140;
+    padding: 30px;
+    border-radius: 2em;
+    margin: 30px auto;
+    box-shadow: 20px 20px 0px 0px  #F29D35;
+}
+
+
+.contenu_formulaire input {
+    padding: 10px;
+    width : 100% ;
+    border : none ; 
+    outline : none ;
+    background-color: #ffffff;
+}
+
+.contenu_formulaire label {
+    margin: 10px 0px;
+    padding: 10px 0px;
+    color: white;
+}
+
+.contenu_formulaire input[type="submit"]{
+    width :30%; 
+    margin: 30px 0px;
+    font-size: 1vw;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: #0C3140;
+    transition: 0.2s;
+}
+
+.contenu_formulaire input[type="submit"]:hover{
+    cursor: pointer;
+    background-color: #F29D35;
+    color: white;
+}
+
+.vignette_burger{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.vignette_burger div img {
+    width:100% ; 
+    
+}
+
+.vignette_burger div {
+    width:20% ;
+    margin : 20px 0px ;
+    box-shadow: 65px 65px 0px -43px rgba(255,255,255,1);
+}
+
+.error{
+    color: rgb(248, 55, 55);
+    padding: 10 0px;
+}
+
 
 
 

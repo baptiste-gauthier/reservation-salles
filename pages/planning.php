@@ -6,15 +6,30 @@ include("../functions/fonctions.php");
 <!DOCTYPE html>
 <html>
     <head>
-        <title> Planning </title>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Inscription </title>
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     </head>
 
     <body>
 
-        <header>
-        </header>
+        <?php 
+            if(isset($_SESSION['user'])){
 
-        <body>
+                include("../include/header_co.php") ; 
+            }
+            else{
+                include("../include/header_deco.php") ; 
+            }
+        
+        ?>
+
+        
+        <main>
+
            <table>
             <thead>
                 <tr>
@@ -47,14 +62,15 @@ include("../functions/fonctions.php");
             </tbody>
 
            </table>
-
+        </main>            
           
 
-        </body>
+        
 
-        <footer>
-        </footer>
-
+        <?php
+            include("../include/footer.php");
+        ?>
+    
     </body>
 </html>
 

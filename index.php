@@ -1,5 +1,7 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,18 +13,17 @@
 </head>
 <body>
     <div class="background" id="top_link">
-        <header>
-            <nav class="contenu_nav">
-                <ul>
-                    <li><a href="#">Accueil</a></li>
-                    <li><a href="#">Inscription</a></li>
-                    <li><a href="#">Connexion</a></li>                   
-                </ul>
-                <div>
-                    <img src="media/hamburger.svg">
-                </div>
-            </nav>
-        </header>
+
+        <?php 
+        if(isset($_SESSION['user'])){
+
+            include("include/header_index_connect.php") ; 
+        }
+        else{
+            include("include/header_index.php") ; 
+        }
+        
+        ?>
 
         
             <section id="presentation" class="animate__animated animate__fadeInDown animate__delay-1s">
@@ -33,7 +34,7 @@
                             <h1> Burger Classic </h1>
                             <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur quae veniam iusto, perspiciatis error, eum commodi ipsa eveniet saepe repudiandae nemo modi hic repellat quas dolor delectus dicta officia! Nostrum?</h3>
                             <form>
-                                <input type="submit">
+                                <input type="submit" value="Découvrir">
                             </form>
                         </div>
                     </div>
@@ -89,20 +90,9 @@
     </section>
     
 
-    <footer>
-        <article class="contenu_footer">
-            <ul>
-                <li><a href="#">Accueil</a></li>
-                <li><a href="#">A propos</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-            <div class="rs">
-                <a href="https://fr-fr.facebook.com/"><i class="fa fa-facebook fa-lg"></i></a>
-                <a href="https://www.instagram.com/?hl=fr"><i class="fa fa-instagram fa-lg"></i></a>
-                <a href="https://twitter.com/home?lang=fr"><i class="fa fa-twitter fa-lg"></i></a>
-            </div>
-        </article>
-    </footer>
+    <?php
+        include("include/footer_index.php");
+    ?>
 
 </body>
 </html>

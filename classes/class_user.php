@@ -63,11 +63,14 @@ class Utilisateur {
             $requete->bindParam(':password', $this->password);
     
             $requete->execute();
+
+            header("Location: connexion.php");
     
-            echo ' Utilisateur ajouté ' ;
         }
         else{
-            echo 'login déjà pris';
+            return '<p class="error"> Login déjà pris </p>';
+           
+            
         }
     }
 
@@ -85,9 +88,7 @@ class Utilisateur {
         {
             return $result ; 
         }
-        else{
-            echo 'erreur : ' ;
-        }
+        
     }
 
     function update($id)
@@ -107,11 +108,11 @@ class Utilisateur {
 
             $requete->execute();
 
-            echo 'changemnt eff' ;
+            return '<p> Changement effectué </p>' ;
 
         }
         else{
-            echo 'login déjà pris' ;
+            return '<p class="error"> Login déjà pris </p>' ;
         }
 
     }

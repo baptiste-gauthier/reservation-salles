@@ -1,6 +1,11 @@
 <?php
     session_start();
 
+    if(!isset($_SESSION['user']))
+    {
+        header("Location: ../index.php") ;
+    }
+
     if(isset($_POST['valider']))
     {
         $titre = $_POST['titre'] ;
@@ -61,67 +66,119 @@
             }
             elseif($jour_debut != $jour_fin)
             {
-                echo 'Veuillez selectionnez le même jour';
+                $meme_jour = '<p class="error"> Veuillez selectionnez le même jour </p>';
             }
             elseif($interval > 2){
-                echo 'Vous ne pouvez pas reservé plus de 2h';
+                $interval_error = '<p class="error"> Vous ne pouvez pas reservé plus de 2h </p>';
             }
             elseif($jour_debut == 0 OR $jour_debut == 6)
             {
-                echo 'Les reservations se font uniquement du lundi au vendredi' ; 
+                $jour_error = '<p class="error"> Les reservations se font uniquement du lundi au vendredi </p>' ; 
             }
             elseif($heure_debut < 8 OR $heure_debut > 18 OR $heure_fin < 9 OR $heure_fin > 19)
             {
-                echo 'Les reservations se font entre 8h et 19h' ;
+                $crenau_error = '<p class="error"> Les reservations se font entre 8h et 19h </p>' ;
             }
             elseif($heure_fin <= $heure_debut)
             {
-                echo 'Erreur : l\'heure de fin est inférieure à l\'heure du début' ; 
+                $heure_error = '<p class="error"> Erreur : l\'heure de fin est inférieure à l\'heure du début </p>' ; 
             }
             else{
-                echo 'Ce crénau horaire est déjà reservé ! ' ; 
+                $reser = '<p class="error"> Ce crénau horaire est déjà reservé ! </p>' ; 
             }
+        }
+        else{
+            $champs = '<p class="error"> Veuillez remplir tous les champs </p>' ;
         }
     }
 ?>
 
 
-
 <DOCTYPE! html>
 <html>
     <head>
-        <title> Formulaire de réservation </title>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Reservation </title>
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
     </head>
 
     <body>
-        <header>
-            LE HEADER
-        </header>
+        <?php
+            
+            include("../include/header_co.php");
+        
+        ?>
 
         <main>
-            <form action="reservation-form.php" method="POST">
+            <section id="formulaire">
+                <article class="contenu_formulaire">
+                    <form action="reservation-form.php" method="POST">
 
-                <label for="titre"> Titre : </label>
-                <input type="text" id="titre" name="titre">
+                        <label for="titre"> Titre : </label>
+                        <input type="text" id="titre" name="titre">
 
-                <label for="des"> Description : </label>
-                <textarea id="des" name="description"></textarea>
+                        <label for="des"> Description : </label>
+                        <textarea id="des" name="description"></textarea>
 
-                <label for="date_debut"> Date de début : </label>
-                <input type="datetime-local" id="date_debut" name="date_debut">
+                        <label for="date_debut"> Date de début : </label>
+                        <input type="datetime-local" id="date_debut" name="date_debut">
 
-                <label for="date_fin"> Date de fin : </label>
-                <input type="datetime-local" id="date_fin" name="date_fin">
+                        <label for="date_fin"> Date de fin : </label>
+                        <input type="datetime-local" id="date_fin" name="date_fin">
 
-                <input type="submit" value="Envoyer" name="valider">
+                        <?php 
+                            if(isset($meme_jour))
+                            {
+                                echo $meme_jour ;
+                            }
+                            elseif(isset($interval_error))
+                            {
+                                echo $interval_error ;
+                            }
+                            elseif(isset($jour_error))
+                            {
+                                echo $jour_error ;
+                            }
+                            elseif(isset($crenau_error))
+                            {
+                                echo $crenau_error ;
+                            }
+                            elseif(isset( $heure_error))
+                            {
+                                echo  $heure_error ;
+                            }
+                            elseif(isset($reser))
+                            {
+                                echo $reser ;
+                            }
+                            elseif(isset($champs))
+                            {
+                                echo $champs ;
+                            }
 
-            </form>
+                        ?>
+
+                        <input type="submit" value="Envoyer" name="valider">
+
+                    </form>
+                </article>
+
+                <article class="vignette_burger">
+                    <div>
+                        <img src="../media/neon.jpg" alt="img_burger">
+                    </div>
+                </article>
+
+            </section>
         </main>
 
-        <footer>
-            LE FOOTER
-        </footer>
+        <?php
+            include("../include/footer.php");
+        ?>
 
     </body>
 </html>
