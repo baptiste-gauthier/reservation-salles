@@ -440,6 +440,45 @@ th{
     background-color: #f29d35a6;
 }
 
+/* CSS INFOS RESA */
+
+.infos span {
+    font-weight: 800;
+}
+
+.contenu_infos_resa{
+    display: flex;
+    justify-content: center;
+    
+}
+
+#infos_resa h1{
+    font-size: 1.5vw ;
+    text-transform: uppercase;
+    padding: 30px;
+}
+
+.infos p {
+    padding: 10px;
+    font-size: 1vw;
+}
+
+.infos{
+    color: white;
+    background-color: #0C3140;
+    padding: 50px;
+    margin: 50px auto;
+    border-radius: 3em;
+    box-shadow: 30px 30px 0px 0px  #F29D35;
+}
+
+#background_burger{
+    background-image: url("../media/burger4.jpg");
+    background-size: 100%;
+    object-fit: cover;
+    height: 50vh;
+}
+
 
 
 

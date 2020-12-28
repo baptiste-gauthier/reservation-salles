@@ -32,7 +32,7 @@
                     <div class="text_pres">
                         <div class="contenu_text_pres">
                             <h1> Burger Classic </h1>
-                            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur quae veniam iusto, perspiciatis error, eum commodi ipsa eveniet saepe repudiandae nemo modi hic repellat quas dolor delectus dicta officia! Nostrum?</h3>
+                            <h3>Une soirée agréable avec des plats délicieux ? – Nos plats sont fraîchement préparés dans une ambiance accueillante. Bienvenue dans notre restaurant Burger Classic. Nous sommes impatients de vous accueillir avec notre menu savoureux et de vous offrir une expérience inoubliable. Inscrivez-vous pour réserver !</h3>
                             <form>
                                 <input type="submit" value="Découvrir">
                             </form>
@@ -68,8 +68,8 @@
                 <img src="media/angelos-michalopoulos-H-t_LuxDE_w-unsplash.jpg" alt="person_with_burger">
             </div>
             <div class="description">
-                <h1> Titre</h1>
-                <p> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum atque vero error inventore delectus explicabo exercitationem. Eaque corporis amet delectus dignissimos a, autem est, adipisci excepturi dolores, porro molestiae sunt.</p>
+                <h1> Restaurant avec carte de menu variée</h1>
+                <p> Notre excellente cuisine se compléte par une vaste gamme de plats et de boissons délicieuses. Nos desserts divins et nos pains frais feront votre bonheur le temps d’une pause ou au dessert.   </p>
                 <form>
                     <label for="site-search"></label>
                     <input type="search" id="site-search" name="q" placeholder="Rechercher...">
