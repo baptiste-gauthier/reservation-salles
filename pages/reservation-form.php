@@ -52,7 +52,7 @@
     
                 $requete->execute() ; 
     
-                echo 'reservation effectué' ;
+                $resa = '<p class="valide"> Réservation effectué </p>' ;
                 if($interval == 2)
                 {
                     $new_date = date_create($date_debut);
@@ -158,6 +158,10 @@
                             elseif(isset($champs))
                             {
                                 echo $champs ;
+                            }
+                            elseif(isset($resa))
+                            {
+                                echo $resa ; 
                             }
 
                         ?>

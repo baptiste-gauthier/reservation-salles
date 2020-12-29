@@ -22,13 +22,11 @@
             {
                 $user = new Utilisateur($new_login,$new_password) ;
                 $user->connexionBdd("reservationsalles", "root","");
-                $user->update($id);
-
                 $log_pris = $user->update($id);
 
                 $table = $user->getAllinfos(); 
 
-                var_dump($table);
+                //var_dump($table);
 
                 $_SESSION['user'] = $table ;
             }

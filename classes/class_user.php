@@ -108,7 +108,7 @@ class Utilisateur {
 
             $requete->execute();
 
-            return '<p> Changement effectué </p>' ;
+            return '<p class ="valide"> Changement effectué </p>' ;
 
         }
         else{
