@@ -33,7 +33,7 @@
                         <div class="contenu_text_pres">
                             <h1> Burger Classic </h1>
                             <h3>Une soirée agréable avec des plats délicieux ? – Nos plats sont fraîchement préparés dans une ambiance accueillante. Bienvenue dans notre restaurant Burger Classic. Nous sommes impatients de vous accueillir avec notre menu savoureux et de vous offrir une expérience inoubliable. Inscrivez-vous pour réserver !</h3>
-                            <form>
+                            <form action="pages/inscription.php">
                                 <input type="submit" value="Découvrir">
                             </form>
                         </div>

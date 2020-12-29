@@ -377,6 +377,11 @@ footer a{
 }
 
 /* CSS PLANNING */
+
+#planning{
+    height: 85vh;
+}
+
 .contenu_planning{
     padding: 20px;
 }
