@@ -23,7 +23,7 @@ function checkHoraire($jour,$heure){
     if($result)
     {
     
-        echo '<td class="reserv"><a href="http://localhost/reservation-salles/pages/reservation.php?id='.$_GET['id'].'">'.$result['login'].','.$result['description'].'</a></td>' ;
+        echo '<td class="reserv"><a href="reservation.php?id='.$_GET['id'].'">'.$result['login'].','.$result['description'].'</a></td>' ;
         
     }
     else{
