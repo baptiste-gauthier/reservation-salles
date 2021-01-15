@@ -17,12 +17,10 @@ function checkHoraire($jour,$heure){
     $requete->execute();
 
     $result = $requete->fetch();
-
-    $_GET['id'] = $result['id_utilisateur'] ;
-
+    
     if($result)
     {
-    
+        $_GET['id'] = @$result['id_utilisateur'] ;
         echo '<td class="reserv"><a href="reservation.php?id='.$_GET['id'].'">'.$result['login'].','.$result['description'].'</a></td>' ;
         
     }
